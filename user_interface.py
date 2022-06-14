@@ -22,3 +22,28 @@
 - обращается к методу импорт из DP 
 
 - Выберите имя
+
+import data_provider
+
+from curses import def_prog_mode
+
+
+def ls_menu() -> int:
+    print('0. ')
+
+
+
+    n = int(input('Выберите пункт из меню'))
+
+    return int
+
+
+def user_choice(n) -> str:
+    if n == 0:
+        print(data_generation)
+    elif n == 1:
+        sername = input('Введите фамилию')
+
+
+def find(user_choice(n)):
+    #делаем срез по таблице и выдаем необходимые данные Инне.
