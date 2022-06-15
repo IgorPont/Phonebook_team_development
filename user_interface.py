@@ -26,6 +26,7 @@
 # import data_provider
 
 import data_generation
+import data_provider
 
 
 def ls_menu() -> int:
@@ -33,9 +34,10 @@ def ls_menu() -> int:
     print('2. Найти номер по фамилии.')
     print('3. Найти номер по имени.')
     print('4. Поиск по номеру телефона.')
-    print('5. Измениить существующую запись.')
-    print('6. Удалить запись.')
-    print('7. Закрыть программу.')
+    print('5. Добавить новую запись.')
+    print('6. Изменить существующую запись.')
+    print('7. Удалить запись.')
+    print('8. Закрыть программу.')
     n = int(input('Выберите пункт из меню'))
     return n
 
@@ -43,20 +45,45 @@ def ls_menu() -> int:
 def user_choice(n) -> str:
     if n == 1:
         print(data_generation)
+        ls_menu()
     elif n == 2:
-        sername = input('Введите фамилию: ')
+        search = input('Введите фамилию: ')
+        ls_menu()
     elif n == 3:
-        name = input('Введите имя: ')
+        search = input('Введите имя: ')
+        ls_menu()
     elif n == 4:
-        number = input('Введите номер  телефона: ')
+        search = input('Введите номер  телефона: ')
+        ls_menu()
     elif n == 5:
-        print()
-        #что должно произойти, и что необходимо для запроса, чтобы поменять запись? телефон, имя, фамилия, id?
+        data_provider.add()  #добавить метод добавления новой записи из CRUD
+        ls_menu()
     elif n == 6:
-        print()
-        #Такой же вопрос.
+        print('1. Найти номер по фамилии.')
+        print('2. Найти номер по имени.')
+        print('3. Поиск по номеру телефона.')
+        change = input('Введите номер пункта: ')
+        if change == 1:
+            search1 = input('Введите фамилию.')
+        elif change == 2:
+            search1 = input('Введите имя')
+        elif change == 3:
+            search1 = input('Введите номер телефона')
+        
     elif n == 7:
-        close()
+        print('1. Найти номер по фамилии.')
+        print('2. Найти номер по имени.')
+        print('3. Поиск по номеру телефона.')
+        deleting = input('Введите номер пункта: ')
+        if deleting == 1:
+            search2 = input('Введите фамилию.')
+        elif deleting == 2:
+            search2 = input('Введите имя')
+        elif deleting == 3:
+            search2 = input('Введите номер телефона')
+    else:
+        file.close()
+    return search
 
 # def find(user_choice(n)):
     # делаем срез по таблице и выдаем необходимые данные Инне.
