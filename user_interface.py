@@ -1,5 +1,6 @@
+from crud import create, delete, retrive, update, delete
 import data_generation
-import data_provider
+
 
 print('Вас приветствует телефонная книга')
 
@@ -18,33 +19,48 @@ def ls_menu() -> int:
     return n
 
 
-def user_choice(n) -> str:
+def user_choice(n):
     if n == 1:
-        print(data_generation)
-        ls_menu()
+        print(retrive())
     elif n == 2:
         search = input('Введите фамилию: ')
-        ls_menu()
+        retrive(sername= search)
     elif n == 3:
         search = input('Введите имя: ')
-        ls_menu()
+        retrive(name= search)
     elif n == 4:
         search = input('Введите номер  телефона: ')
-        ls_menu()
+        retrive(number= search)
     elif n == 5:
-        data_provider.add()  # добавить метод добавления новой записи из CRUD
-        ls_menu()
+        name = input('Введите имя: ')
+        surname = input('Введите фамилию: ')
+        number = input('Введите номер телефона: ')
+        e_mail = input('Введите электронную почту: ')
+        create(name, surname, number, e_mail)  # добавить метод добавления новой записи из CRUD
     elif n == 6:
         print('1. Найти номер по фамилии.')
         print('2. Найти номер по имени.')
         print('3. Поиск по номеру телефона.')
         change = input('Введите номер пункта: ')
         if change == 1:
-            search1 = input('Введите фамилию.')
+            search = input('Введите фамилию.')
+            retrive(sername= search)
+            user_id = input('Введите id записи: ')
+            new_number = input('Введите новый номер телефона: ')
+            update(id= user_id, new_number= new_number)
+
         elif change == 2:
-            search1 = input('Введите имя')
+            search = input('Введите имя: ')
+            retrive(name= search)
+            user_id = input('Введите id записи: ')
+            new_number = input('Введите новый номер телефона: ')
+            update(id= user_id, new_number= new_number)
         elif change == 3:
-            search1 = input('Введите номер телефона')
+            search = input('Введите номер телефона: ')
+            retrive(number= search)
+            user_id = input('Введите id записи: ')
+            new_number = input('Введите новый номер телефона: ')
+            update(id= user_id, new_number= new_number)
 
     elif n == 7:
         print('1. Найти номер по фамилии.')
@@ -52,14 +68,24 @@ def user_choice(n) -> str:
         print('3. Поиск по номеру телефона.')
         deleting = input('Введите номер пункта: ')
         if deleting == 1:
-            search2 = input('Введите фамилию.')
+            search = input('Введите фамилию: ')
+            retrive(sername= search)
+            user_id = input('Введите id записи: ')
+            delete(id= user_id)
         elif deleting == 2:
-            search2 = input('Введите имя')
+            search = input('Введите имя: ')
+            retrive(name= search)
+            user_id = input('Введите id записи: ')
+            delete(id= user_id)
         elif deleting == 3:
-            search2 = input('Введите номер телефона')
+            search = input('Введите номер телефона: ')
+            retrive(number= search)
+            user_id = input('Введите id записи: ')
+            new_number = input('Введите новый номер телефона: ')
+            delete(id= user_id)
     else:
-        file.close()
-    return search
+        print('Спасибо за работу!')
+
 
 
 ls_menu()
