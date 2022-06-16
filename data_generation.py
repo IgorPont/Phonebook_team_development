@@ -1,10 +1,11 @@
 import csv 
 file = open('base_phone.csv', 'w') 
-newrecord ="ID;Name;Surname;PhoneNumber\n" 
+newrecord ="ID;Name;Surname;PhoneNumber;e_mail\n" 
 file.writelines(newrecord) 
  
 ls_name = ['Svetlana', 'Olga', 'Anton', 'Anna', 'Inna', 'Viktor', 'Vasilisa', 'Alex', 'Miron','Igor', 'Anna'] 
 ls_surname = ['Kovalenko', 'Sidorenko', 'Mironenko', 'Galich', 'Shapiro', 'Duma', 'Duma', 'Shagal', 'Moroz'] 
+ls_e_mail = ['@gmail.com', '@yandex.ru', '@mail.ru']
 import random 
  
 def list_of_numbers(): 
@@ -16,7 +17,7 @@ def list_of_numbers():
  
 def string_creation(): 
     s = "" 
-    s = s + random.choice(ls_name) + ';' + random.choice(ls_surname) + ';' + list_of_numbers() 
+    s = s + random.choice(ls_name) + ';' + random.choice(ls_surname) + ';' +  list_of_numbers() + ';' + random.choice(ls_surname) + random.choice(ls_e_mail)
     return s 
  
 for i in range(100): 
