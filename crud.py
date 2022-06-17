@@ -10,6 +10,7 @@ def init_data_base (file_name= 'db.csv'):
     global db
     global db_file_name
     db_file_name = file_name
+    db.clear()
     if os.path.exists(db_file_name):
         with open(db_file_name,'r', newline='') as csv_file:
             reader = csv.reader(csv_file)
@@ -24,7 +25,6 @@ def create (name = '', surname = '', number = '', email=''):
     global global_id
     global db
     global db_file_name
-
     if(name==''):
         print("ALARM NO NAME SPECIFIED!!!!!1111")
         return
@@ -39,12 +39,12 @@ def create (name = '', surname = '', number = '', email=''):
         return
 
     for row in db:
-        if(row[1]== name and row [2] == surname and row [3] == number and row[4] == email):
+        if(row[1]== name.title() and row [2] == surname.title() and row [3] == number and row[4] == email.lower()):
             print("already exist")
             return
 
     global_id += 1
-    new_row = [str(global_id), name, surname, number, email]
+    new_row = [str(global_id), name.title(), surname.title(), number, email.lower()]
     db.append(new_row)
     with open(db_file_name, 'a', newline='') as csv_file:
         writer = csv.writer(csv_file, delimiter=',', quotechar='\'', quoting=csv.QUOTE_MINIMAL)
@@ -59,13 +59,13 @@ def retrive ( id = '', name = '', surname = '', number = '', email=''): # пои
     for row in db:
         if (id != '' and row[0] != id):
             continue
-        if(name != '' and row[1] != name):
+        if(name.title() != '' and row[1] != name):
             continue
-        if(surname != '' and row[2] != surname):
+        if(surname.title() != '' and row[2] != surname):
             continue
         if(number != '' and row[3] != number):
             continue
-        if(email != '' and row[3] != number):
+        if(email.lower() != '' and row[3] != number):
             continue
         result.append(row)
     return result
@@ -82,16 +82,16 @@ def update (id = '', new_name = '', new_surname = '', new_number = '', new_email
         for row in db:
             if(row[0] == id):
                 if(new_name!=''):
-                    row[1]=new_name
+                    row[1]=new_name.title()
 
                 if(new_surname!=''):
-                    row[2]=new_surname
+                    row[2]=new_surname.title()
 
                 if(new_number!=''):
                     row[3]=new_number
             
                 if(new_email!=''):
-                    row[3]=new_email
+                    row[3]=new_email.lower()
                 
             writer.writerow(row)
 
@@ -135,7 +135,7 @@ def delete (id = ''):
 # print(retrive(id='1', number='123'))
 
 #==================Обновление записи==================
-# update(id='2', new_number='09876544')
+# update(id='2', new_number='09876544', new_name='petya')
 
 
 #===================Удаление записи=======================
