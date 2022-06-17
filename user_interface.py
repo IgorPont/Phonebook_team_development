@@ -1,5 +1,5 @@
 import data_generation
-import data_provider
+import crud
 
 print('Вас приветствует телефонная книга')
 
