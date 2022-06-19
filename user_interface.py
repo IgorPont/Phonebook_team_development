@@ -15,7 +15,7 @@ def ls_menu():
         print('6. Изменить существующую запись.')
         print('7. Удалить запись.')
         print('8. Закрыть программу.\n')
-        n = int(input('Выберите пункт из меню'))
+        n = int(input('Выберите пункт из меню: '))
 
         if n == 1:
             print(cr.retrive())
@@ -41,7 +41,7 @@ def ls_menu():
             print('3. Поиск по номеру телефона.')
             change = int(input('Введите номер пункта: '))
             if change == 1:
-                search = input('Введите фамилию.')
+                search = input('Введите фамилию: ')
                 print(cr.retrive(surname=search))
                 user_id = input('Введите id записи: ')
                 new_number = input('Введите новый номер телефона: ')
@@ -49,13 +49,13 @@ def ls_menu():
 
             elif change == 2:
                 search = input('Введите имя: ')
-                cr.retrive(name=search)
+                print(cr.retrive(name=search))
                 user_id = input('Введите id записи: ')
                 new_number = input('Введите новый номер телефона: ')
                 cr.update(id=user_id, new_number=new_number)
             elif change == 3:
                 search = input('Введите номер телефона: ')
-                cr.retrive(number=search)
+                print(cr.retrive(number=search))
                 user_id = input('Введите id записи: ')
                 new_number = input('Введите новый номер телефона: ')
                 cr.update(id=user_id, new_number=new_number)
@@ -72,14 +72,13 @@ def ls_menu():
                 cr.delete(id=user_id)
             elif deleting == 2:
                 search = input('Введите имя: ')
-                cr.retrive(name=search)
+                print(cr.retrive(name=search))
                 user_id = input('Введите id записи: ')
                 cr.delete(id=user_id)
             elif deleting == 3:
                 search = input('Введите номер телефона: ')
-                cr.retrive(number=search)
+                print(cr.retrive(number=search))
                 user_id = input('Введите id записи: ')
-                new_number = input('Введите новый номер телефона: ')
                 cr.delete(id=user_id)
         else:
             print('Спасибо за работу!')
