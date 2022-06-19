@@ -1,7 +1,8 @@
 import crud as cr
+import logger as lg
 
 
-print('Вас приветствует телефонная книга')
+print('\nВас приветствует телефонная книга')
 
 
 def ls_menu():
@@ -15,76 +16,131 @@ def ls_menu():
         print('6. Изменить существующую запись.')
         print('7. Удалить запись.')
         print('8. Закрыть программу.\n')
-        n = int(input('Выберите пункт из меню'))
+        n = сhecking_the_number(input('Выберите пункт меню: '))
 
         if n == 1:
+            lg.logging.info('The user has selected item number 1')
             print(cr.retrive())
         elif n == 2:
+            lg.logging.info('The user has selected item number 2')
             search = input('Введите фамилию: ')
+            lg.logging.info(f'User entered: {search}')
             print(cr.retrive(surname=search))
         elif n == 3:
+            lg.logging.info('The user has selected item number 3')
             search = input('Введите имя: ')
+            lg.logging.info(f'User entered: {search}')
             print(cr.retrive(name=search))
         elif n == 4:
+            lg.logging.info('The user has selected item number 4')
             search = input('Введите номер  телефона: ')
+            lg.logging.info(f'User entered: {search}')
             print(cr.retrive(number=search))
         elif n == 5:
+            lg.logging.info('The user has selected item number 5')
             name = input('Введите имя: ')
+            lg.logging.info(f'User entered: {name}')
             surname = input('Введите фамилию: ')
+            lg.logging.info(f'User entered: {surname}')
             number = input('Введите номер телефона: ')
+            lg.logging.info(f'User entered: {number}')
             email = input('Введите электронную почту: ')
+            lg.logging.info(f'User entered: {email}')
             # добавить метод добавления новой записи из CRUD
             cr.create(name, surname, number, email)
         elif n == 6:
+            lg.logging.info('The user has selected item number 6')
             print('1. Найти номер по фамилии.')
             print('2. Найти номер по имени.')
             print('3. Поиск по номеру телефона.')
-            change = int(input('Введите номер пункта: '))
+            change = сhecking_the_number(input('Введите номер пункта: '))
             if change == 1:
-                search = input('Введите фамилию.')
-                print(cr.retrive(surname=search))
+                lg.logging.info('The user has selected item number 6.1')
+                search = input('Введите фамилию: ')
+                lg.logging.info(f'User entered: {search}')
+                cr.retrive(surname=search)
                 user_id = input('Введите id записи: ')
+                lg.logging.info(f'User entered: {user_id}')
                 new_number = input('Введите новый номер телефона: ')
+                lg.logging.info(f'User entered: {new_number}')
                 cr.update(id=user_id, new_number=new_number)
 
             elif change == 2:
+                lg.logging.info('The user has selected item number 6.2')
                 search = input('Введите имя: ')
+                lg.logging.info(f'User entered: {search}')
                 cr.retrive(name=search)
                 user_id = input('Введите id записи: ')
+                lg.logging.info(f'User entered: {user_id}')
                 new_number = input('Введите новый номер телефона: ')
+                lg.logging.info(f'User entered: {new_number}')
                 cr.update(id=user_id, new_number=new_number)
             elif change == 3:
+                lg.logging.info('The user has selected item number 6.2')
                 search = input('Введите номер телефона: ')
+                lg.logging.info(f'User entered: {search}')
                 cr.retrive(number=search)
                 user_id = input('Введите id записи: ')
+                lg.logging.info(f'User entered: {user_id}')
                 new_number = input('Введите новый номер телефона: ')
+                lg.logging.info(f'User entered: {new_number}')
                 cr.update(id=user_id, new_number=new_number)
+            else:
+                lg.logging.info('User entered an invalid menu value')
+                print(
+                    '\nТакого пункта меню не существует.\nВведите цифру, соответствующую пункту меню.')
 
         elif n == 7:
+            lg.logging.info('The user has selected item number 7')
             print('1. Найти номер по фамилии.')
             print('2. Найти номер по имени.')
             print('3. Поиск по номеру телефона.')
-            deleting = int(input('Введите номер пункта: '))
+            deleting = сhecking_the_number(input('Введите номер пункта: '))
             if deleting == 1:
+                lg.logging.info('The user has selected item number 7.1')
                 search = input('Введите фамилию: ')
+                lg.logging.info(f'User entered: {search}')
                 print(cr.retrive(surname=search))
                 user_id = input('Введите id записи: ')
+                lg.logging.info(f'User entered: {user_id}')
                 cr.delete(id=user_id)
             elif deleting == 2:
+                lg.logging.info('The user has selected item number 7.2')
                 search = input('Введите имя: ')
-                cr.retrive(name=search)
+                lg.logging.info(f'User entered: {search}')
+                print(cr.retrive(name=search))
                 user_id = input('Введите id записи: ')
+                lg.logging.info(f'User entered: {user_id}')
                 cr.delete(id=user_id)
             elif deleting == 3:
+                lg.logging.info('The user has selected item number 7.3')
                 search = input('Введите номер телефона: ')
-                cr.retrive(number=search)
+                lg.logging.info(f'User entered: {search}')
+                print(cr.retrive(number=search))
                 user_id = input('Введите id записи: ')
+                lg.logging.info(f'User entered: {user_id}')
                 new_number = input('Введите новый номер телефона: ')
                 cr.delete(id=user_id)
-        else:
+            else:
+                lg.logging.info('User entered an invalid menu value')
+                print(
+                    '\nТакого пункта меню не существует.\nВведите цифру, соответствующую пункту меню.')
+        elif n == 8:
+            lg.logging.info('End')
             print('Спасибо за работу!')
             break
-
+        else:
+            lg.logging.info(f'User entered an invalid menu value: {n}')
+            print(
+                '\nТакого пункта меню не существует.\nВведите цифру, соответствующую пункту меню.')
 
 # def find(user_choice(n)):
 # делаем срез по таблице и выдаем необходимые данные Инне.
+
+
+def сhecking_the_number(arg):
+    while arg.isdigit() != True:
+        lg.logging.info(f'User entered an invalid menu value: {arg}')
+        print('\nВы ввели не число.')
+        arg = input('Введите соответствующий пункт меню: ')
+    return int(arg)
