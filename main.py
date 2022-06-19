@@ -1,6 +1,11 @@
+# import data_generation as dg
 import user_interface as ui
 import logger as lg
+import crud
 
+
+# чисто технически можо получать имя файла бд из переменных среды или конфигурационного файла
+# dg.start()
 lg.logging.info('Start')
-# ui.ls_menu()
-ui.user_choice(ui.ls_menu())
+crud.init_data_base('base_phone.csv')
+ui.ls_menu()
