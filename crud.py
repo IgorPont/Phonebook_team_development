@@ -1,11 +1,11 @@
 import csv
 import os.path
 
-db_file_name = ''
+db_file_name = 'base_phone'
 db = []
 global_id = 0 # id для добавления пользователей
 
-def init_data_base (file_name= 'db.csv'):
+def init_data_base (file_name= 'base_phone.csv'):
     global global_id
     global db
     global db_file_name
