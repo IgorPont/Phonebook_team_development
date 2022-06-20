@@ -109,6 +109,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+Bla_bla
+Bla_bla/*
 
 # Spyder project settings
 .spyderproject
@@ -127,3 +129,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# bot
+token_bot.txt
