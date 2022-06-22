@@ -5,7 +5,7 @@ import crud
 
 
 # чисто технически можо получать имя файла бд из переменных среды или конфигурационного файла
-# dg.start()
+# dg.start() # генерация базы контактов
 lg.logging.info('Start')
 crud.init_data_base('base_phone.csv')
 ui.ls_menu()

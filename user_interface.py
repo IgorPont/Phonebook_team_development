@@ -89,7 +89,6 @@ def ls_menu():
                 lg.logging.info('User entered an invalid menu value')
                 print(
                     '\nТакого пункта меню не существует.\nВведите цифру, соответствующую пункту меню.')
-
         elif n == 7:
             lg.logging.info('The user has selected item number 7')
             print('1. Найти номер по фамилии.')
