@@ -77,8 +77,9 @@ def retrive(id='', name='', surname='', number='', email=''):
             continue
         result.append(row)
     if len(result) == 0:
-        return f'Ваш телефонный справочник пуст'
+        return f'Контакты не найдены'
     else:
+        # выход список списков (переделать в строку с разделителем)
         return result
 
 
